@@ -8,6 +8,9 @@ import { RolesModule } from './roles/roles.module';
 import { NotificacionesModule } from './notificaciones/notificaciones.module';
 import { TipoDocumentosModule } from './tipo-documentos/tipo-documentos.module';
 import { DocumentosModule } from './documentos/documentos.module';
+import { AsistenteModule } from './asistente/asistente.module';
+import { DirectorModule } from './director/director.module';
+import { CompartidoModule } from './compartido/compartido.module';
 
 @Module({
   imports: [
@@ -22,6 +25,9 @@ import { DocumentosModule } from './documentos/documentos.module';
     NotificacionesModule,
     TipoDocumentosModule,
     DocumentosModule,
+    AsistenteModule,
+    DirectorModule,
+    CompartidoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

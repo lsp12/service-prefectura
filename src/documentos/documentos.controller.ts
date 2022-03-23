@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  Res,
 } from '@nestjs/common';
 import { DocumentosService } from './documentos.service';
 import { CreateDocumentoDto } from './dto/create-documento.dto';
 import { UpdateDocumentoDto } from './dto/update-documento.dto';
+import { Express, Response } from 'express';
 
 @Controller('documentos')
 export class DocumentosController {
@@ -23,6 +25,12 @@ export class DocumentosController {
   @Get()
   findAll() {
     return this.documentosService.findAll();
+  }
+
+  @Post('/carbone')
+  Carbone(@Res() res: Response, @Body() body: any) {
+    console.log(body);
+    return this.documentosService.Carbone(res, body);
   }
 
   @Get(':id')

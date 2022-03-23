@@ -6,8 +6,8 @@
     "username": "root", 
     "password": "",
     "database": "documentos",
-    "synchronize": true,
-    "logging": true,
+    "synchronize": false,
+    "logging": false,
     "entities": [
         "src/entity/**/*.ts",
         "build/entity/**/*.js"

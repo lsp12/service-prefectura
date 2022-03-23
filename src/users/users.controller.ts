@@ -30,6 +30,11 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('/director')
+  findByDirectory() {
+    return this.usersService.findByDirectory();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);

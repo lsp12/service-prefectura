@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/users/entities/user.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Notificacione {
@@ -16,4 +17,10 @@ export class Notificacione {
 
   @Column({ default: false })
   estado: boolean;
+
+  @ManyToOne(() => User, (user) => user.notificaciones, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  user: User;
 }

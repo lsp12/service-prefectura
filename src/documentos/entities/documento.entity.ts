@@ -1,3 +1,4 @@
+import { Compartido } from 'src/compartido/entities/compartido.entity';
 import { TipoDocumento } from 'src/tipo-documentos/entities/tipo-documento.entity';
 import { User } from 'src/users/entities/user.entity';
 import {
@@ -22,12 +23,25 @@ export class Documento {
   @Column()
   fecha: string;
 
+  @Column({ default: false })
+  compartida: boolean;
+
   @ManyToOne(
     (type) => TipoDocumento,
     (tipoDocumento) => tipoDocumento.documentos,
+    {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
   )
   tipoDocumento: TipoDocumento;
 
-  @ManyToOne((type) => User, (user) => user.documentos)
+  @ManyToOne((type) => User, (user) => user.documentos, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   user: User;
+
+  @OneToMany((type) => Compartido, (compartido) => compartido.documento)
+  compartidos: Compartido[];
 }

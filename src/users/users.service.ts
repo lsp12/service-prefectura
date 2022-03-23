@@ -35,8 +35,26 @@ export class UsersService {
   }
 
   async findAll() {
-    const users = await this.usersRepository.find();
-    return users;
+    const users = await this.usersRepository.find({
+      relations: ['role'],
+    });
+    return users.map((user) => {
+      const { password, ...result } = user;
+      return result;
+    });
+  }
+
+  async findByDirectory() {
+    const users = await this.usersRepository.find({
+      where: {
+        role: 5,
+      },
+      relations: ['role'],
+    });
+    return users.map((user) => {
+      const { password, ...result } = user;
+      return result;
+    });
   }
 
   async findOne(id: number) {
